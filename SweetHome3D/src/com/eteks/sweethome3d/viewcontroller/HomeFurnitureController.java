@@ -595,7 +595,8 @@ public class HomeFurnitureController implements Controller {
    */
   public boolean isPropertyEditable(Property property) {
     switch (property) {
-      case DESCRIPTION :
+      case DESCRIPTION : // Task 2 implementation
+        return true;
       case PRICE :
         return false;
       case LIGHT_POWER :
