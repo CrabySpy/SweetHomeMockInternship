@@ -47,6 +47,7 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
   private final float             width;
   private final float             depth;
   private final float             height;
+  private final float             volumn;
   private final boolean           proportional;
   private final float             elevation;
   private final float             dropOnTopElevation;
@@ -92,8 +93,8 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    *             parameter since a catalog door and window is supposed to be an instance 
    *             of {@link CatalogDoorOrWindow} 
    */
-  public CatalogPieceOfFurniture(String name, Content icon, Content model, 
-                                 float width, float depth, float height, 
+  public CatalogPieceOfFurniture(String name, Content icon, Content model,
+                                 float width, float depth, float height,
                                  boolean movable, boolean doorOrWindow) {
     this(null, name, null, icon, model, width, depth, height, 0, movable, doorOrWindow, 
         INDENTITY_ROTATION, null, true, null, null);
@@ -122,9 +123,9 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    *             parameter since a catalog door and window is supposed to be an instance 
    *             of {@link CatalogDoorOrWindow} 
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, Content icon, Content model, 
-                                 float width, float depth, float height, float elevation, 
-                                 boolean movable, boolean doorOrWindow, 
+  public CatalogPieceOfFurniture(String id, String name, String description, Content icon, Content model,
+                                 float width, float depth, float height, float elevation,
+                                 boolean movable, boolean doorOrWindow,
                                  float [][] modelRotation, String creator,
                                  boolean resizable, BigDecimal price, BigDecimal valueAddedTaxPercentage) {
     this(id, name, description, icon, model, width, depth, height, elevation, movable, 
@@ -151,8 +152,8 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    *             price of the new piece or <code>null</code> 
    * @since 1.7
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, Content icon, Content model, 
-                                 float width, float depth, float height, float elevation, 
+  public CatalogPieceOfFurniture(String id, String name, String description, Content icon, Content model,
+                                 float width, float depth, float height, float elevation,
                                  boolean movable, float [][] modelRotation, String creator,
                                  boolean resizable, BigDecimal price, BigDecimal valueAddedTaxPercentage) {
     this(id, name, description, icon, null, model, width, depth, height, elevation, movable, 
@@ -180,9 +181,9 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    *             price of the new piece or <code>null</code> 
    * @since 2.2
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, 
-                                 Content icon, Content planIcon, Content model, 
-                                 float width, float depth, float height, float elevation, 
+  public CatalogPieceOfFurniture(String id, String name, String description,
+                                 Content icon, Content planIcon, Content model,
+                                 float width, float depth, float height, float elevation,
                                  boolean movable, float [][] modelRotation, String creator,
                                  boolean resizable, BigDecimal price, BigDecimal valueAddedTaxPercentage) {
     this(id, name, description, icon, planIcon, model, width, depth, height, elevation, movable, 
@@ -213,11 +214,11 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    *             price of the new piece or <code>null</code> 
    * @since 3.0
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, 
-                                 Content icon, Content planIcon, Content model, 
-                                 float width, float depth, float height, float elevation, 
+  public CatalogPieceOfFurniture(String id, String name, String description,
+                                 Content icon, Content planIcon, Content model,
+                                 float width, float depth, float height, float elevation,
                                  boolean movable, float [][] modelRotation, String creator,
-                                 boolean resizable, boolean deformable, boolean texturable, 
+                                 boolean resizable, boolean deformable, boolean texturable,
                                  BigDecimal price, BigDecimal valueAddedTaxPercentage) {
     this(id, name, description, icon, planIcon, model, width, depth, height, elevation, 
         movable, null, modelRotation, creator, resizable, deformable, texturable,
@@ -251,12 +252,12 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    * @param currency the price currency, noted with ISO 4217 code, or <code>null</code> 
    * @since 3.4
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, 
-                                 Content icon, Content planIcon, Content model, 
-                                 float width, float depth, float height, 
-                                 float elevation, boolean movable, String staircaseCutOutShape, 
+  public CatalogPieceOfFurniture(String id, String name, String description,
+                                 Content icon, Content planIcon, Content model,
+                                 float width, float depth, float height,
+                                 float elevation, boolean movable, String staircaseCutOutShape,
                                  float [][] modelRotation, String creator,
-                                 boolean resizable, boolean deformable, boolean texturable, 
+                                 boolean resizable, boolean deformable, boolean texturable,
                                  BigDecimal price, BigDecimal valueAddedTaxPercentage, String currency) {
     this(id, name, description, null, new String [0], null, null, icon, planIcon, model, width, depth, 
         height, elevation, movable, staircaseCutOutShape, modelRotation, creator, resizable, deformable,
@@ -294,13 +295,13 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    * @param currency the price currency, noted with ISO 4217 code, or <code>null</code>
    * @since 3.6
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, 
-                                 String information, String [] tags, Long creationDate, Float grade, 
-                                 Content icon, Content planIcon, Content model, 
-                                 float width, float depth, float height, 
-                                 float elevation, boolean movable, String staircaseCutOutShape, 
-                                 float [][] modelRotation, String creator, 
-                                 boolean resizable, boolean deformable, boolean texturable, 
+  public CatalogPieceOfFurniture(String id, String name, String description,
+                                 String information, String [] tags, Long creationDate, Float grade,
+                                 Content icon, Content planIcon, Content model,
+                                 float width, float depth, float height,
+                                 float elevation, boolean movable, String staircaseCutOutShape,
+                                 float [][] modelRotation, String creator,
+                                 boolean resizable, boolean deformable, boolean texturable,
                                  BigDecimal price, BigDecimal valueAddedTaxPercentage, String currency) {
     this(id, name, description, information, tags, creationDate, grade, icon, planIcon, model, width, depth, 
         height, elevation, 1f, movable, false, staircaseCutOutShape, null, modelRotation, false, creator, resizable, deformable,
@@ -340,14 +341,14 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    * @param currency the price currency, noted with ISO 4217 code, or <code>null</code>
    * @since 4.4 
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, 
-                                 String information, String [] tags, Long creationDate, Float grade, 
-                                 Content icon, Content planIcon, Content model, 
-                                 float width, float depth, float height, 
-                                 float elevation, float dropOnTopElevation, 
-                                 boolean movable, String staircaseCutOutShape, 
-                                 float [][] modelRotation, String creator, 
-                                 boolean resizable, boolean deformable, boolean texturable, 
+  public CatalogPieceOfFurniture(String id, String name, String description,
+                                 String information, String [] tags, Long creationDate, Float grade,
+                                 Content icon, Content planIcon, Content model,
+                                 float width, float depth, float height,
+                                 float elevation, float dropOnTopElevation,
+                                 boolean movable, String staircaseCutOutShape,
+                                 float [][] modelRotation, String creator,
+                                 boolean resizable, boolean deformable, boolean texturable,
                                  BigDecimal price, BigDecimal valueAddedTaxPercentage, String currency) {
     this(id, name, description, information, tags, creationDate, grade, icon, planIcon, model, width, depth, height, 
         elevation, dropOnTopElevation, movable, staircaseCutOutShape, modelRotation, false, 
@@ -388,17 +389,17 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    * @param currency the price currency, noted with ISO 4217 code, or <code>null</code>
    * @since 5.3 
    */
-  public CatalogPieceOfFurniture(String id, String name, String description, 
-                                 String information, String [] tags, Long creationDate, Float grade, 
-                                 Content icon, Content planIcon, Content model, 
-                                 float width, float depth, float height, 
-                                 float elevation, float dropOnTopElevation, 
-                                 boolean movable, String staircaseCutOutShape, 
-                                 float [][] modelRotation, boolean backFaceShown, String creator, 
-                                 boolean resizable, boolean deformable, boolean texturable, 
+  public CatalogPieceOfFurniture(String id, String name, String description,
+                                 String information, String [] tags, Long creationDate, Float grade,
+                                 Content icon, Content planIcon, Content model,
+                                 float width, float depth, float height,
+                                 float elevation, float dropOnTopElevation,
+                                 boolean movable, String staircaseCutOutShape,
+                                 float [][] modelRotation, boolean backFaceShown, String creator,
+                                 boolean resizable, boolean deformable, boolean texturable,
                                  BigDecimal price, BigDecimal valueAddedTaxPercentage, String currency) {
     this(id, name, description, information, tags, creationDate, grade, icon, planIcon, model, width, depth, 
-        height, elevation, dropOnTopElevation, movable, false, staircaseCutOutShape, null, modelRotation, backFaceShown, 
+        height, elevation, dropOnTopElevation, movable, false, staircaseCutOutShape, null, modelRotation, backFaceShown,
         creator, resizable, deformable, texturable, price, valueAddedTaxPercentage, currency, (float)Math.PI / 8, true, false);
   }
   
@@ -422,8 +423,8 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    *             parameter since a catalog door and window is supposed to be an instance 
    *             of {@link CatalogDoorOrWindow} 
    */
-  public CatalogPieceOfFurniture(String name, Content icon, Content model, 
-                                 float width, float depth, float height, float elevation, 
+  public CatalogPieceOfFurniture(String name, Content icon, Content model,
+                                 float width, float depth, float height, float elevation,
                                  boolean movable, boolean doorOrWindow, Integer color,
                                  float [][] modelRotation, boolean backFaceShown,
                                  float iconYaw, boolean proportional) {
@@ -448,8 +449,8 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    * @param proportional if <code>true</code>, size proportions will be kept
    * @since 1.7 
    */
-  public CatalogPieceOfFurniture(String name, Content icon, Content model, 
-                                 float width, float depth, float height, float elevation, 
+  public CatalogPieceOfFurniture(String name, Content icon, Content model,
+                                 float width, float depth, float height, float elevation,
                                  boolean movable, Integer color,
                                  float [][] modelRotation, boolean backFaceShown,
                                  float iconYaw, boolean proportional) {
@@ -476,24 +477,24 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    * @param proportional if <code>true</code>, size proportions will be kept
    * @since 3.4 
    */
-  public CatalogPieceOfFurniture(String name, Content icon, Content model, 
-                                 float width, float depth, float height, float elevation, 
+  public CatalogPieceOfFurniture(String name, Content icon, Content model,
+                                 float width, float depth, float height, float elevation,
                                  boolean movable, String staircaseCutOutShape,
-                                 Integer color, float [][] modelRotation, 
+                                 Integer color, float [][] modelRotation,
                                  boolean backFaceShown, float iconYaw, boolean proportional) {
     this(null, name, null, null, new String [0], System.currentTimeMillis(), null, icon, null, model, width, depth, height, elevation, 1f,
         movable, false, staircaseCutOutShape, color, modelRotation, backFaceShown, null, true, true, true, null, null, null, iconYaw, proportional, true);
   }
   
-  private CatalogPieceOfFurniture(String id, String name, String description, 
-                                  String information, String [] tags, Long creationDate, Float grade, 
-                                  Content icon, Content planIcon, Content model, 
-                                  float width, float depth, float height, 
-                                  float elevation, float dropOnTopElevation, 
+  private CatalogPieceOfFurniture(String id, String name, String description,
+                                  String information, String [] tags, Long creationDate, Float grade,
+                                  Content icon, Content planIcon, Content model,
+                                  float width, float depth, float height,
+                                  float elevation, float dropOnTopElevation,
                                   boolean movable, boolean doorOrWindow, String staircaseCutOutShape,
                                   Integer color, float [][] modelRotation, boolean backFaceShown,
-                                  String creator, boolean resizable, boolean deformable, boolean texturable, 
-                                  BigDecimal price, BigDecimal valueAddedTaxPercentage, String currency, 
+                                  String creator, boolean resizable, boolean deformable, boolean texturable,
+                                  BigDecimal price, BigDecimal valueAddedTaxPercentage, String currency,
                                   float iconYaw, boolean proportional, boolean modifiable) {
     this.id = id;
     this.name = name;
@@ -508,6 +509,7 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
     this.width = width;
     this.depth = depth;
     this.height = height;
+    this.volumn = width * depth * height;
     this.elevation = elevation;
     this.dropOnTopElevation = dropOnTopElevation;
     this.movable = movable;
@@ -606,6 +608,12 @@ public class CatalogPieceOfFurniture implements Comparable<CatalogPieceOfFurnitu
    */
   public float getWidth() {
     return this.width;
+  }
+  /**
+   * Returns the volumn of this piece of furniture.
+   */
+  public float getVolumn() {
+    return this.volumn;
   }
 
   /**
