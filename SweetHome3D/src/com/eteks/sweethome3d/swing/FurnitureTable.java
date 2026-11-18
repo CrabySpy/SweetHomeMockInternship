@@ -778,7 +778,49 @@ public class FurnitureTable extends JTable implements View, Printable {
       // Change printable column header renderer
       printableColumn.setHeaderRenderer(printableHeaderRenderer);
       printableColumnModel.addColumn(printableColumn);
-    }    
+    }
+    if (columnModel instanceof FurnitureTableColumnModel) {
+      final TableColumn levelColumn =
+              ((FurnitureTableColumnModel)columnModel).getAvailableColumn(
+                      HomePieceOfFurniture.SortableProperty.LEVEL);
+
+      boolean levelColumnAlreadyAdded = false;
+
+      for (int i = 0; i < printableColumnModel.getColumnCount(); i++) {
+        if (HomePieceOfFurniture.SortableProperty.LEVEL.equals(
+                printableColumnModel.getColumn(i).getIdentifier())) {
+          levelColumnAlreadyAdded = true;
+          break;
+        }
+      }
+
+      if (!levelColumnAlreadyAdded) {
+        TableColumn printableLevelColumn = new TableColumn();
+        printableLevelColumn.setIdentifier(levelColumn.getIdentifier());
+        printableLevelColumn.setHeaderValue(levelColumn.getHeaderValue());
+        printableLevelColumn.setPreferredWidth(levelColumn.getPreferredWidth());
+
+        printableLevelColumn.setCellRenderer(new TableCellRenderer() {
+          public Component getTableCellRendererComponent(
+                  JTable table, Object value,
+                  boolean isSelected, boolean hasFocus,
+                  int row, int column) {
+
+            Component component =
+                    levelColumn.getCellRenderer().getTableCellRendererComponent(
+                            table, value, isSelected, hasFocus, row, column);
+
+            component.setBackground(Color.WHITE);
+            component.setForeground(Color.BLACK);
+
+            return component;
+          }
+        });
+
+        printableLevelColumn.setHeaderRenderer(printableHeaderRenderer);
+        printableColumnModel.addColumn(printableLevelColumn);
+      }
+    }
     return print(g, pageFormat, pageIndex, printableColumnModel, Color.BLACK);
   }
 
@@ -1017,6 +1059,9 @@ public class FurnitureTable extends JTable implements View, Printable {
       updateModelColumns(home.getFurnitureVisibleProperties());
     }
 
+    private TableColumn getAvailableColumn(HomePieceOfFurniture.SortableProperty property) {
+      return this.availableColumns.get(property);
+    }
     /**
      * Creates the list of available columns from furniture sortable properties.
      */
