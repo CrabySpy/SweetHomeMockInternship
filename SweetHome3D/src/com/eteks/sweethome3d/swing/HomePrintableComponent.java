@@ -378,18 +378,6 @@ public class HomePrintableComponent extends JComponent implements Printable {
         this.furniturePageCount++;
       }
     }
-    if (pageExists == NO_SUCH_PAGE 
-        && planView != null 
-        && (homePrint == null || homePrint.isPlanPrinted())) {
-      // Try to print next plan view page
-      pageExists = ((Printable)planView).print(g2D, pageFormat, page - this.furniturePageCount);
-      if (pageExists == PAGE_EXISTS
-          && !this.printablePages.contains(page)) {
-        this.printablePages.add(page);
-        this.planPageCount++;
-      }
-    }
-    View view3D = this.controller.getHomeController3D().getView();
     if (pageExists == NO_SUCH_PAGE
             && planView != null
             && (homePrint == null || homePrint.isPlanPrinted())) {
@@ -436,7 +424,19 @@ public class HomePrintableComponent extends JComponent implements Printable {
         this.planPageCount++;
       }
     }
-    
+    View view3D = this.controller.getHomeController3D().getView();
+    if (pageExists == NO_SUCH_PAGE
+            && view3D != null
+            && (homePrint == null || homePrint.isView3DPrinted())) {
+      pageExists = ((Printable)view3D).print(
+              g2D, pageFormat,
+              page - this.planPageCount - this.furniturePageCount);
+
+      if (pageExists == PAGE_EXISTS
+              && !this.printablePages.contains(page)) {
+        this.printablePages.add(page);
+      }
+    }
     // Print header and footer
     if (pageExists == PAGE_EXISTS) {
       g2D.setTransform(oldTransform);
